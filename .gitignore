@@ -1,3 +1,33 @@
+#Haskell .gitignore
+#See https://raw.githubusercontent.com/github/gitignore/main/Haskell.gitignore
+#See https://www.haskell.org/cabal/users-guide/developing-packages.html#package-properties
+dist
+dist-*
+cabal-dev
+*.o
+*.hi
+*.hie
+*.chi
+*.chs.h
+*.dyn_o
+*.dyn_hi
+.hpc
+.hsenv
+.cabal-sandbox/
+cabal.sandbox.config
+*.prof
+*.aux
+*.hp
+*.eventlog
+.stack-work/
+cabal.project.local
+cabal.project.local~
+.HTF/
+.ghc.environment.*
+
+
+
+
 #ignore huggingface
 summarizeApp
 #ignore fine-tuning

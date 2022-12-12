@@ -1,25 +1,74 @@
 [![CI](https://github.com/nogibjj/python-template/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/python-template/actions/workflows/cicd.yml)
-## Template for Python projects 
+## Template for Haskell projects 
 
-1. First thing to do on launch is to open a new shell and verify virtualenv is sourced.
+## Lesson 2:  Using Cabal
 
-Things included are:
+* [Walk through this](https://www.haskell.org/ghcup/steps/#using-external-packages-in-ghci)
 
-* `Makefile`
 
-* `Pytest`
+## Lesson:  Install and Getting Started
 
-* `pandas`
+* [Haskell Downloads](https://www.haskell.org/downloads/)
+* [Getting started first steps](https://www.haskell.org/ghcup/steps/)
 
-* `Pylint`
+* Step 1:  Where is it?  `which gch` and should show `/home/codespace/.local/bin/ghc`
+* Step2:  Get the version `ghc --version` you should see: `The Glorious Glasgow Haskell Compilation System, version 9.2.4` or something similar
+* Step 3:  Write a hello world in `hello.hs` with body of `main = putStrLn "Hello, Haskell!"`
+* Step 4:  Compile:  `ghc hello.hs`
+* Step 5:  Run:   `./hello `
+* Step 6:  You can also just run it: `runghc hello.hs`
 
-* `Dockerfile`
+### Interactive Haskell
 
-* `GitHub copilot`
+`ghci` starts the interactive mode:
 
-* `jupyter` and `ipython` 
+```bash
+@noahgift ➜ /workspaces/assimilate-haskell (main ✗) $ ghci
+GHCi, version 9.2.4: https://www.haskell.org/ghc/  :? for help
+ghci> 1+1
+2
+ghci> main = putStrLn "Hello, Haskell!"
+ghci> main
+Hello, Haskell!
+ghci> 
+```
 
-* A base set of libraries for devops and web
+You can see `putStrLn "This is interactive Haskell"` to echo
 
-* `githubactions` 
+Load existing code:
+
+`:load hello.hs`
+
+Then run main
+
+Can also import library:
+
+`import Data.Bits`
+
+Check expression
+
+Quit:
+
+### Warnings
+
+`ghc -Wall hello.hs -fforce-recomp`
+
+Example Output
+
+```bash
+hello.hs:2:1: warning: [-Wmissing-signatures]
+    Top-level binding with no type signature: main :: IO ()
+  |
+2 | main = putStrLn "Hello, Haskell!"
+  | ^^^^
+Linking hello ...
+```
+
+Put this into `Makefile`:  `make compile-haskell-warnings`
+
+
+
+### References
+
+
 
