@@ -1,6 +1,11 @@
 [![CI](https://github.com/nogibjj/python-template/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/python-template/actions/workflows/cicd.yml)
 ## Template for Haskell projects 
 
+## Lesson 3:  Build a working Marco Polo Command-Line Tools
+
+* Use cabal and build out a working command-line tool that takes in Marco and returns Polo
+
+
 ## Lesson 2:  Using Cabal
 
 * [Walk through this](https://www.haskell.org/ghcup/steps/#using-external-packages-in-ghci)
