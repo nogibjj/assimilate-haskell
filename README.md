@@ -1,10 +1,81 @@
 [![CI](https://github.com/nogibjj/python-template/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/python-template/actions/workflows/cicd.yml)
 ## Template for Haskell projects 
 
+## Lesson 4:  Figure out formatting and linting
+
+* What is popular for formatting?
+* What is popular for linting?
+
+
 ## Lesson 3:  Build a working Marco Polo Command-Line Tools
 
 * Use cabal and build out a working command-line tool that takes in Marco and returns Polo
 
+This create a new cabal structure:
+
+```bash
+mkdir myfirstapp
+cd myfirstapp
+cabal init
+```
+After you do this, run `tree`
+```bash
+.
+├── app
+│   └── Main.hs
+├── CHANGELOG.md
+└── myfirstapp.cabal
+
+1 directory, 3 files
+```
+
+* To run it:  `cabal run` or `make run`
+* To add a package you tweak like this (you can check formatting by running `cargo format`)
+
+```cabal
+executable myfirstapp
+    main-is:          Main.hs
+    hs-source-dirs:   app
+    default-language: Haskell2010
+    build-depends:
+        base ^>=4.16.4.0,
+        haskell-say ^>=1.0.0.0
+```
+
+* To recompile and run with package you just do `cargo run`
+```bash
+ ________________________________________________________
+ /                                                        \
+| Hello, Haskell! You're using a function from another     |
+| package!                                                 |
+ \____       _____________________________________________/
+      \    /
+       \  /
+        \/
+  _____   _____
+  \    \  \    \
+   \    \  \    \
+    \    \  \    \
+     \    \  \    \  \-----------|
+      \    \  \    \  \          |
+       \    \  \    \  \---------|
+       /    /  /     \
+      /    /  /       \  \-------|
+     /    /  /    ^    \  \      |
+    /    /  /    / \    \  \ ----|
+   /    /  /    /   \    \
+  /____/  /____/     \____\
+  ```
+
+What about formatting?  Let's try to install: `make install` which 
+installs `cabal install hlint stylish-haskell`
+
+
+### Reference
+
+* [Quickstart Cabal](https://cabal.readthedocs.io/en/stable/getting-started.html)
+* [Haskell Code Formatter](https://hackage.haskell.org/package/haskell-formatter)
+* [Search packages, i.e. hlint](https://hackage.haskell.org/package/hlint)
 
 ## Lesson 2:  Using Cabal
 
