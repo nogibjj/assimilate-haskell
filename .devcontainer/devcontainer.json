@@ -51,7 +51,8 @@
 				"ms-python.python",
 				"ms-vscode.makefile-tools",
 				"haskell.haskell",
-				"justusadam.language-haskell"
+				"justusadam.language-haskell",
+				"hoovercj.haskell-linter"
 			]
 		}
 	},
