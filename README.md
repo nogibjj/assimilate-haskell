@@ -1,10 +1,12 @@
 [![CI](https://github.com/nogibjj/python-template/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/python-template/actions/workflows/cicd.yml)
 ## Template for Haskell projects 
 
-## Lesson 4:  Figure out formatting and linting
+## Lesson 4:  Figure out formatting and linting and CLI arg parsing
 
-* What is popular for formatting?
+
 * What is popular for linting?
+* What is popular for cli tools
+* If possible, build a Marco Polo CLI.
 
 
 ## Lesson 3:  Build a working Marco Polo Command-Line Tools
@@ -67,8 +69,8 @@ executable myfirstapp
   /____/  /____/     \____\
   ```
 
-What about formatting?  Let's try to install: `make install` which 
-installs `cabal install hlint stylish-haskell`
+Q: What about formatting?  
+A:  `sudo apt-get install stylish-haskell`
 
 
 ### Reference
