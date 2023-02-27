@@ -1,8 +1,19 @@
 [![CI](https://github.com/nogibjj/python-template/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/python-template/actions/workflows/cicd.yml)
 ## Template for Haskell projects 
 
+## Lesson 5:  Build Marco Polo with optparse
+
+`cabal run marco-polo-cli -- --hello foo`
+
+We got a cli working, next lets use optparse though to build marco polo.
+
+
 ## Lesson 4:  Figure out formatting and linting and CLI arg parsing
 
+* [Hackage is the package manager website](https://hackage.haskell.org/packages/browse)
+* [Use optparse-applicative](https://hackage.haskell.org/package/optparse-applicative)
+
+to run it `cabal run marco-polo-cli -- --hello foo`
 
 * What is popular for linting?
 * What is popular for cli tools
