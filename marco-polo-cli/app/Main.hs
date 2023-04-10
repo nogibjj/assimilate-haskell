@@ -1,39 +1,30 @@
---how do I invoke the cli with cabal?
+{-This is a Marco Polo CLI, the contract should look like this:
 --cabal run marco-polo-cli -- --help
---cabal run marco-polo-cli -- --hello "Marco" --enthusiasm 3
+--cabal run marco-polo-cli -- --hello "Marco"
+-}
 
-import Options.Applicative
+import           Options.Applicative
 
-data Sample = Sample
-  { hello      :: String
-  , quiet      :: Bool
-  , enthusiasm :: Int }
+data Options = Options
+  { optHello :: String
+  }
 
-sample :: Parser Sample
-sample = Sample
-      <$> strOption
-          ( long "hello"
-         <> metavar "TARGET"
-         <> help "Target for the greeting" )
-      <*> switch
-          ( long "quiet"
-         <> short 'q'
-         <> help "Whether to be quiet" )
-      <*> option auto
-          ( long "enthusiasm"
-         <> help "How enthusiastically to greet"
-         <> showDefault
-         <> value 1
-         <> metavar "INT" )
+options :: Parser Options
+options = Options
+  <$> strOption
+      ( long "hello"
+     <> metavar "TARGET"
+     <> help "Target for the Marco Polo Greeting" )
 
 main :: IO ()
-main = greet =<< execParser opts
-  where
-    opts = info (sample <**> helper)
-      ( fullDesc
-     <> progDesc "Print a greeting for TARGET"
-     <> header "hello - a test for optparse-applicative" )
+main = do
+  opts <- execParser (info (options <**> helper) idm)
+  let name = optHello opts
+  putStrLn (marcoPolo name)
 
-greet :: Sample -> IO ()
-greet (Sample h False n) = putStrLn $ "Hello, " ++ h ++ replicate n '!'
-greet _ = return ()
+marcoPolo :: String -> String
+marcoPolo name =
+  if name == "Marco" then "Polo"
+  else "No, " ++ name
+
+

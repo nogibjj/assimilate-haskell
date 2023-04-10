@@ -1,6 +1,63 @@
 [![CI](https://github.com/nogibjj/python-template/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/python-template/actions/workflows/cicd.yml)
 ## Template for Haskell projects 
 
+## Lesson 7: Figure out how to test Haskell CLI (TO DO...not done yet)
+
+* Test with QuickCheck: https://hackage.haskell.org/package/QuickCheck (fully automated testing)  
+
+```haskell
+import Test.QuickCheck
+import System.Process
+import System.Exit
+
+-- The QuickCheck test
+prop_marcoPolo :: String -> Property
+prop_marcoPolo name =
+  let expected = if name == "Marco" then "Polo" else "No, " ++ name
+  in (== expected) <$> readProcess "cabal" ["run", "marco-polo-cli", "--", "--hello", name] ""
+
+-- Run the test
+main :: IO ()
+main = do
+  result <- quickCheckResult prop_marcoPolo
+  case result of
+    Success {} -> exitSuccess
+    _ -> exitFailure
+```
+
+## Lesson 6:  Completed fully working Marco Polo
+
+```bash
+cabal run marco-polo-cli -- --hello "Bob"
+cabal run marco-polo-cli -- --hello "Marco"
+```
+
+```haskell
+import           Options.Applicative
+
+data Options = Options
+  { optHello :: String
+  }
+
+options :: Parser Options
+options = Options
+  <$> strOption
+      ( long "hello"
+     <> metavar "TARGET"
+     <> help "Target for the Marco Polo Greeting" )
+
+main :: IO ()
+main = do
+  opts <- execParser (info (options <**> helper) idm)
+  let name = optHello opts
+  putStrLn (marcoPolo name)
+
+marcoPolo :: String -> String
+marcoPolo name =
+  if name == "Marco" then "Polo"
+  else "No, " ++ name
+```
+
 ## Lesson 5:  Build Marco Polo with optparse
 
 `cabal run marco-polo-cli -- --hello foo`
